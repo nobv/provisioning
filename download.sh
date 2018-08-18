@@ -23,5 +23,12 @@ if ! is_exsits "brew"; then
 
 fi
 
+echo "******************************"
+echo "Start installing osx-provisioning.git!!!"
+echo "******************************"
+git clone https://github.com/Nobv/osx-provisioning.git 
+echo "******************************"
+echo "Finished!!!"
+echo "******************************"
 
 
