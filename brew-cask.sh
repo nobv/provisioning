@@ -2,6 +2,7 @@
 
 echo "Install GUI Apps"
 brew cask install appcleaner
+brew cask install cyberduck
 brew cask install docker
 brew cask install dropbox
 brew cask install firefox
