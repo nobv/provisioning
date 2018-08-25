@@ -9,3 +9,4 @@ mas install 425424353  # The Unarchiver
 mas install 937984704  # Amphetamine
 mas install 441258766  # Magnet
 mas install 405843582  # Alfred
+mas install 1055511498 # Day One
