@@ -1,5 +1,8 @@
 #!/bin/bash
 
+readonly PROVISIONINGPATH=~/.osx-provisioning
+readonly DOTPATH=~/.dotfiles
+
 is_exsits() {
   which "$1" >/dev/null 2>&1
   return $?
@@ -23,12 +26,27 @@ if ! is_exsits "brew"; then
 
 fi
 
-echo "******************************"
-echo "Start installing osx-provisioning.git!!!"
-echo "******************************"
-git clone https://github.com/Nobv/osx-provisioning.git 
-echo "******************************"
-echo "Finished!!!"
-echo "******************************"
+if [ ! -d "${PROVISIONINGPATH}" ]; then
+  echo "******************************"
+  echo "Start installing osx-provisioning.git!!!"
+  echo "******************************"
+  git clone https://github.com/Nobv/osx-provisioning.git 
+  echo "******************************"
+  echo "Finished!!!"
+  echo "******************************"
+fi
 
+if [ ! -d "${DOTPATH}" ]; then
+  echo "Downloading dotfiles..."
+  cd ${HOME}
+  echo ${PWD}
+  #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
+  git clone https://github.com/Nobv/dotfiles.git .dotfiles
+  cd .dotfiles
+  sh install.sh
+fi
 
+# TODO
+# https://justgetflux.com/dlmac.html
+# tar
+# move to Application
