@@ -23,7 +23,7 @@ is_exsits () {
 #echo "******************************"
 
 if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
-  message "Installing zsh...""
+  message "Installing zsh..."
   brew install zsh
   zsh --version
 
