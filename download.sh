@@ -2,12 +2,13 @@
 
 readonly PROVISIONINGPATH=~/.osx-provisioning
 readonly DOTPATH=~/.dotfiles
+readonly DOWNLOADSPATH=~/Downloads
+readonly APPLICATIONPATH=/Applications
 
 is_exsits() {
   which "$1" >/dev/null 2>&1
   return $?
 }
-
 
 if ! is_exsits "brew"; then
   echo "******************************"
@@ -46,7 +47,10 @@ if [ ! -d "${DOTPATH}" ]; then
   sh install.sh
 fi
 
-# TODO
-# https://justgetflux.com/dlmac.html
-# tar
-# move to Application
+if [ ! -e "${APPLICATIONPATH}/Flux.app" ]; then
+  curl -o ${DOWNLOADSPATH}/Flux.zip https://justgetflux.com/mac/Flux.zip
+  cd ${DOWNLOADSPATH}
+  unzip Flux.zip &
+  wait $!
+  open Flux.app
+fi

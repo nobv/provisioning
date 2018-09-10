@@ -6,21 +6,33 @@ message () {
 
 message "install brew apps!!"
 
-#brew update
-
 is_exsits () {
   which "$1" >/dev/null 2>&1
   return $?
 }
 
-#echo "******************************"
-#echo "Start installing bash!!!"
-#echo "******************************"
-#brew install bash
+# Languages
+if ! is_exsits "go"; then
+  message "Installing Golang..."
+  brew install go
+  go version
+fi
 
-#echo "******************************"
-#echo "Finished!!!"
-#echo "******************************"
+if ! is_exsits "erl"; then
+  message "Installing Erlang..."
+  brew install erlang
+  erl -version
+fi
+
+if ! is_exsits "lua"; then
+  message "Installing Lua..."
+  brew install lua
+  lua -v
+fi
+
+# Tools
+#message "Instaling bash4.x..."
+#brew install bash
 
 if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
   message "Installing zsh..."
@@ -30,84 +42,32 @@ if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
   sudo vi /etc/shells
   # /usr/local/bin/zshを追記
   chsh -s /usr/local/bin/zsh
+  exec $SHELL -l
   echo $SHELL
 fi
 
 if ! is_exsits "git"; then
-  echo "******************************"
-  echo "Start installing git!!!"
-  echo "******************************"
+  message "Installing git..." 
   brew install git
   git --version
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
 fi
 
 if ! is_exsits "ansible"; then
-  echo "******************************"
-  echo "Start installing ansible!!!"
-  echo "******************************"
+  message "Insstalling ansible..."
   brew install ansible
   ansible --version
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
 fi
 
 if ! is_exsits "mas"; then
-  echo "******************************"
-  echo "Start installing mas!!!"
-  echo "******************************"
+  message "Installing mas..."
   brew install mas
   mas version
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
-fi
-
-if ! is_exsits "go"; then
-  echo "******************************"
-  echo "Start installing Golang!!!"
-  echo "******************************"
-  brew install go
-  go version
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
-fi
-
-if ! is_exsits "erl"; then
-  echo "******************************"
-  echo "Start installing Erlang!!!"1
-  echo "******************************"
-  brew install erlang
-  erl -version
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
 fi
 
 if ! is_exsits "tmux"; then
-  echo "******************************"
-  echo "Start installing tmux!!!"
-  echo "******************************"
+  message "Installing tmux..."
   brew install tmux
   tmux -V
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
-fi
-
-if ! is_exsits "lua"; then
-  echo "******************************"
-  echo "Start installing lua!!!"
-  echo "******************************"
-  brew install lua
-  lua -v
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
 fi
 
 if ! is_exsits "ghq"; then
