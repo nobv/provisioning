@@ -40,7 +40,7 @@ os_judgment() {
 }
 
 is_osx() {
-  os_detect
+  os_judgment
   if [ "$PLATFORM" = "osx" ]; then
     return 0
   else
@@ -49,7 +49,7 @@ is_osx() {
 }
 
 is_linux() {
-  os_detect
+  os_judgment
   if [ "$PLATFORM" = "linux" ]; then
     return 0
   else
