@@ -30,6 +30,12 @@ if ! is_exsits "lua"; then
   lua -v
 fi
 
+if ! is_exsits "python3"; then
+  message "Installing python3..."
+  brew install python3
+  python3 --version
+fi
+
 # Tools
 #message "Instaling bash4.x..."
 #brew install bash
@@ -82,19 +88,13 @@ if ! is_exsits "peco"; then
   peco --version
 fi
 
-if ! is_exsits "python3"; then
-  message "Installing python3..."
-  brew install python3
-  python3 --version
-fi
-
 if [ $(which vim) = "/usr/bin/vim" ]; then
   message "Installing vim --with-lua --with-python3"
   brew install vim --with-lua --with-python3
   vim --version
 fi
 
-if [ -n $(pip3 freeze | grep neovim) ]; then
+if [ ! -n $(pip3 freeze | grep neovim) ]; then
   message "Installing pip3 neovim..."
   pip3 install neovim
   pip3 freeze | grep neovim
@@ -113,3 +113,22 @@ if ! is_exsits "dlv"; then
   brew install go-delve/delve/delve
   dlv version
 fi
+
+if ! is_exsits "jq"; then
+  message "Installing jq..."
+  brew install jq
+  jq --version
+fi
+
+if ! is_exsits "fzf"; then
+  message "Installing fzf..."
+  brew install fzf
+  fzf --version
+fi
+
+if ! is_exsits "hub"; then
+  message "Installing hub..."
+  brew install hub
+  hub --version
+fi
+
