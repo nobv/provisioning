@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Import colors
+eval "$(curl -L raw.github.com/Nobv/dotfiles/master/bin/color)"
+
+printf ${FOREGROUND_RED}test${COLOR_OFF}
