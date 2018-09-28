@@ -1,6 +1,13 @@
 #!/bin/bash
 
+OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
+
 # Import colors
 eval "$(curl -L raw.github.com/Nobv/dotfiles/master/bin/color)"
 
-printf ${FOREGROUND_RED}test${COLOR_OFF}
+# Download
+# TODO: when git is not exists
+git clone "$OSX_GITHUB"
+
+# TODO: Implementation make file
+make deploy
