@@ -1,13 +1,62 @@
 #!/bin/bash
 
+export PROVISIONINGPATH=~/.osx-provisioning
+
 OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
 
-# Import colors
-eval "$(curl -L raw.github.com/Nobv/dotfiles/master/bin/color)"
+info() {
+  printf "\e[37;2m$1\e[m\n"
+}
+
+succes() {
+  printf "\e[36;2m$1\e[m\n"
+}
+
+error() {
+  printf "\e[31;2m$1\e[m\n"
+}
 
 # Download
-# TODO: when git is not exists
-git clone "$OSX_GITHUB"
+download() {
 
-# TODO: Implementation make file
-make deploy
+  if [ -d $PROVISIONINGPATH ];then
+    error "${PROVISIONINGPATH} is already exists."
+    exit 1
+  fi
+
+  # TODO: when git is not exists
+  info "Downloading provisioning file..."
+  #git clone "$OSX_GITHUB" $PROVISIONINGPATH
+}
+
+initialize() {
+  make initialize
+}
+
+os_update() {
+
+  local execute_update=
+
+  while :
+  do
+    read -p "You need os update? (y/n): " yn
+    case "$yn" in
+      y | n)
+        execute_update=$yn
+        break
+        ;;
+      *)
+        echo "Input y or n key"
+        ;;
+    esac
+  done
+
+  if [ $execute_update = 'y' ]; then
+    echo "Execute updating..."
+    make os_update
+  else
+    echo "Nonexecute updating..."
+  fi
+}
+
+os_update

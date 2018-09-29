@@ -8,7 +8,7 @@ initialize:
 	@echo ''
 	bash initialize.sh
 
-osx-update:
+osx_update:
 	@echo '==> Start to osx-update!!!'
 	bash osx-update.sh
 

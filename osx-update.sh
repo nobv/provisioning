@@ -14,29 +14,19 @@ is_up_to_date() {
 
 update_osx() {
 
-  confirm_update
-
-  if [[ $? -eq 0 ]]; then
-      #Execute Update
-      softwareupdate --install --all
-  fi
+  #Execute Update
+  softwareupdate --install --all
 
 }
 
 confirm_update() {
-    
-  cat << EOS
 
-    --------------------------------------------------
-
-    Update? yes/no
-
-EOS
+  printf "\e[35mExecute ox update? (y/n): \e[m"
 
   read input
 
   if [[ $input == yes ]]; then
-      return 0
+    return 0
   fi
 
   return 1
@@ -53,14 +43,14 @@ check_install_from_application() {
   if [[ $version -ge $target ]]; then
     #Open Installer
     # Todo: 動的にできる？
-    open -a /Applications/Install\ macOS\ High\ Sierra.app/    
+    open -a /Applications/Install\ macOS\ High\ Sierra.app/
   fi
 
 }
 
 # 再起動オプションが使えるかどうか
 is_restart_available() {
-  
+
   # macOS10.13.4からsoftwareupdateに再起動オプションが追加
   AVAILABLE_VERSION=10.13.4
 
@@ -82,12 +72,18 @@ get_current_os_version() {
 }
 
 to_zero_padding() {
- echo $("$1"| awk -F. '{printf "%2d%02d%02d", $1,$2,$3}') 
+  echo $("$1"| awk -F. '{printf "%2d%02d%02d", $1,$2,$3}') 
 }
 
 main() {
   is_up_to_date
-  update_osx
+
+  confirm_update
+
+  if [ -z $? ]; then
+    update_osx
+  fi
+
   # Todo: アップデートがなければ実行しないようにする
   #check_install_from_application
 }

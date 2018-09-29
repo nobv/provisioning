@@ -53,7 +53,7 @@ if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
 fi
 
 if ! is_exsits "git"; then
-  message "Installing git..." 
+  message "Installing git..."
   brew install git
   git --version
 fi

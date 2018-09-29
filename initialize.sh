@@ -1,10 +1,11 @@
 #!/bin/bash
 
-daclare PLATFORM
-daclare HOMEBREW
+PLATFORM=
+HOMEBREW=
 
 readonly PROVISIONINGPATH=~/.osx-provisioning
 readonly DOTPATH=~/.dotfiles
+echo $PROVISIONINGPATH
 
 is_exsits() {
   which "$1" >/dev/null 2>&1
@@ -16,7 +17,7 @@ os_type() {
 }
 
 os_judgment() {
-  case "$(ostype)" in
+  case "$(os_type)" in
     *'linux'*)
       PLATFORM='linux'
       HOMEBREW='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
@@ -73,23 +74,13 @@ if ! is_exsits "brew"; then
 
 fi
 
-if [ ! -d "${PROVISIONINGPATH}" ]; then
-  echo "******************************"
-  echo "Start installing osx-provisioning.git!!!"
-  echo "******************************"
-  git clone https://github.com/Nobv/osx-provisioning.git 
-  echo "******************************"
-  echo "Finished!!!"
-  echo "******************************"
-fi
-
-if [ ! -d "${DOTPATH}" ]; then
-  echo "Downloading dotfiles..."
-  cd ${HOME}
-  echo ${PWD}
-  #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
-  git clone https://github.com/Nobv/dotfiles.git .dotfiles
-  cd .dotfiles
-  sh install.sh
-fi
+#if [ ! -d "${DOTPATH}" ]; then
+#  echo "Downloading dotfiles..."
+#  cd ${HOME}
+#  echo ${PWD}
+#  #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
+#  git clone https://github.com/Nobv/dotfiles.git .dotfiles
+#  cd .dotfiles
+#  sh install.sh
+#fi
 
