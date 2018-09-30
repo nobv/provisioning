@@ -29,34 +29,13 @@ download() {
   #git clone "$OSX_GITHUB" $PROVISIONINGPATH
 }
 
-initialize() {
-  make initialize
+install() {
+
+  download
+
+  make inisialize
+
+  make install
+
+  make osx_update:
 }
-
-os_update() {
-
-  local execute_update=
-
-  while :
-  do
-    read -p "You need os update? (y/n): " yn
-    case "$yn" in
-      y | n)
-        execute_update=$yn
-        break
-        ;;
-      *)
-        echo "Input y or n key"
-        ;;
-    esac
-  done
-
-  if [ $execute_update = 'y' ]; then
-    echo "Execute updating..."
-    make os_update
-  else
-    echo "Nonexecute updating..."
-  fi
-}
-
-os_update
