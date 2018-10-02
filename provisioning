@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PROVISIONINGPATH=~/.osx-provisioning
+PROVISIONINGPATH=~/.osx-provisioning
 
 OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
 
@@ -31,7 +31,7 @@ download() {
   succes "Download"
 }
 
-install() {
+provisioning() {
 
   download
 
@@ -42,3 +42,4 @@ install() {
   make osx_update:
 }
 
+succes "Download test!!!!"
