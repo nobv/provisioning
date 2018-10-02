@@ -5,15 +5,15 @@ export PROVISIONINGPATH=~/.osx-provisioning
 OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
 
 info() {
-  printf "\e[37;2m$1\e[m\n"
+  printf "\e[37;1m%s\e[m\n" "$*"
 }
 
 succes() {
-  printf "\e[36;2m$1\e[m\n"
+  printf "\e[36m%s\e[m\n" "✔ $*"
 }
 
 error() {
-  printf "\e[31;2m$1\e[m\n"
+  printf "\e[31;2m%s\e[m\n" "✖ $*"
 }
 
 # Download
@@ -26,7 +26,9 @@ download() {
 
   # TODO: when git is not exists
   info "Downloading provisioning file..."
-  #git clone "$OSX_GITHUB" $PROVISIONINGPATH
+  git clone "$OSX_GITHUB" $PROVISIONINGPATH
+
+  succes "Download"
 }
 
 install() {
@@ -39,3 +41,4 @@ install() {
 
   make osx_update:
 }
+
