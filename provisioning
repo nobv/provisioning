@@ -42,4 +42,4 @@ provisioning() {
   make osx_update:
 }
 
-succes "Download test!!!!"
+provisioning
