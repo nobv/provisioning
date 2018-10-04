@@ -17,7 +17,6 @@ install:
 	bash brew.sh
 	bash brew-cask.sh
 	bash appstore.sh
-	bash ghq.sh
 	bash download.sh
 
 osx_setting:
