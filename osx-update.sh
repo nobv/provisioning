@@ -1,12 +1,4 @@
 #!/bin/bash
-cat << EOS
-
-Nobv
-
-Initilizetion for mac
-
-EOS
-
 
 is_up_to_date() {
   softwareupdate --list
@@ -25,7 +17,7 @@ confirm_update() {
 
   read input
 
-  if [[ $input == yes ]]; then
+  if [ ${input} = y ]; then
     return 0
   fi
 
@@ -80,8 +72,9 @@ main() {
 
   confirm_update
 
-  if [ -z $? ]; then
-    update_osx
+  if [ $? -eq 0 ]; then
+    #update_osx
+    echo "yes"
   fi
 
   # Todo: アップデートがなければ実行しないようにする

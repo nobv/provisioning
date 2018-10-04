@@ -17,5 +17,11 @@ install:
 	bash brew.sh
 	bash brew-cask.sh
 	bash appstore.sh
+	bash ghq.sh
+	bash download.sh
+
+osx_setting:
+	@echo '==> Starting osx-defaults'
+	bash oxs-defaults.sh
 
 # vim: set noexpandtab tabstop=4 shiftwidth=4 :

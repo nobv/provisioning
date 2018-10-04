@@ -1,8 +1,12 @@
 #!/bin/bash
 
-PROVISIONINGPATH=~/.osx-provisioning
+PLATFORM=
+HOMEBREW=
 
-OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
+readonly OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
+readonly PROVISIONINGPATH=~/.osx-provisioning
+readonly DOTPATH=~/.dotfiles
+
 
 info() {
   printf "\e[37;1m%s\e[m\n" "$*"
@@ -16,17 +20,96 @@ error() {
   printf "\e[31;2m%s\e[m\n" "✖ $*"
 }
 
+
+is_exsits() {
+  which "$1" >/dev/null 2>&1
+  return $?
+}
+
+os_type() {
+  uname | tr "[:upper:]" "[:lower:]"
+}
+
+os_judgment() {
+  case "$(os_type)" in
+    *'linux'*)
+      PLATFORM='linux'
+      HOMEBREW='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
+      ;;
+    *'darwin'*)
+      PLATFORM='osx'
+      HOMEBREW='/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+      ;;
+    *'bsd'*)
+      PLATFORM='bsd'
+      HOMEBREW=''
+      ;;
+    *)
+      PLATFORM='unknown'
+      HOMEBREW=''
+      ;;
+  esac
+  export PLATFORM
+}
+
+is_osx() {
+  os_judgment
+  if [ "${PLATFORM}" = "osx" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+is_linux() {
+  os_judgment
+  if [ "${PLATFORM}" = "linux" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+
+
+initialize() {
+
+  os_judgment
+  if ! is_exsits "brew"; then
+
+    info "==> installing Homebrew..."
+
+    eval ${HOMEBREW}
+    brew update
+    brew upgrade --all --cleanup
+    brew -v
+
+    succes "Homebrew"
+  fi
+
+  if [ ! -d "${DOTPATH}" ]; then
+    echo "Downloading dotfiles..."
+    cd ${HOME}
+    echo ${PWD}
+    #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
+    git clone https://github.com/Nobv/dotfiles.git ${DOTPATH}
+    cd ${DOTPATH}
+    sh install.sh
+  fi
+}
+
+
 # Download
 download() {
 
-  if [ -d $PROVISIONINGPATH ];then
+  if [ -d ${PROVISIONINGPATH} ];then
     error "${PROVISIONINGPATH} is already exists."
     exit 1
   fi
 
   # TODO: when git is not exists
   info "Downloading provisioning file..."
-  git clone "$OSX_GITHUB" $PROVISIONINGPATH
+  git clone "${OSX_GITHUB}" ${PROVISIONINGPATH}
 
   succes "Download"
 }
@@ -35,11 +118,15 @@ provisioning() {
 
   download
 
-  make inisialize
+  initialize
+
+  cd ${PROVISIONINGPATH}
+
+  make initialize
 
   make install
 
-  make osx_update:
-}
+  make osx_setting
 
-provisioning
+  make osx_update
+}
