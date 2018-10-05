@@ -129,4 +129,3 @@ install() {
   make osx_update
 }
 
-install
