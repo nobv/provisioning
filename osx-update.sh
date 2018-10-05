@@ -78,7 +78,7 @@ main() {
   fi
 
   # Todo: アップデートがなければ実行しないようにする
-  #check_install_from_application
+  check_install_from_application
 }
 
 main
