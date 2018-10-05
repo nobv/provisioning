@@ -3,11 +3,6 @@
 
 all:
 
-initialize:
-	@echo '==> Start to initialize!!!'
-	@echo ''
-	bash initialize.sh
-
 osx_update:
 	@echo '==> Start to osx-update!!!'
 	bash osx-update.sh

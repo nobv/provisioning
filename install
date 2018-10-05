@@ -122,8 +122,6 @@ install() {
 
   cd ${PROVISIONINGPATH}
 
-  make initialize
-
   make install
 
   make osx_setting
