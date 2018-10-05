@@ -114,7 +114,7 @@ download() {
   succes "Download"
 }
 
-provisioning() {
+install() {
 
   download
 
@@ -130,3 +130,5 @@ provisioning() {
 
   make osx_update
 }
+
+install
