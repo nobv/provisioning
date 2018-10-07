@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# System Preferences{{{
+
+## Sharing{{{
+
+### Set computer name
+sudo scutil --set ComputerName "Nobv"
+sudo scutil --set HostName "Nobv"
+sudo scutil --set LocalHostName "Nobv"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Nobv"#}}}
+
+## Dock{{{
+
+### Set position on screen doc
+defaults write com.apple.dock orientation -string "left"
+
+### Set automatically hide Dock
+defaults write com.apple.dock autohide -bool true#}}}
+
+## Trackpad{{{
+
+### Point & Click
+
+#### Enable `Tap to click`
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+#### Tracing speed
+defaults write -g com.apple.trackpad.scaling -float 4#}}}
+
+## Security & Privacy{{{
+
+## Firewall{{{
+
+### Turn On Firewall
+defaults write /Library/Preferences/com.apple.alf globalstate -int 1#}}}#}}}#}}}
+
+# Finder{{{
+
+## View{{{
+
+### Show Status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+### Show Path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+### Show Tab bar
+defaults write com.apple.finder ShowTabView -bool true#}}}
+
+## Other{{{
+
+### Show the hidden files
+defaults write com.apple.finder AppleShowAllFiles YES#}}}#}}}
+
+# Terminal{{{
+TERM_PROFILE='Solarized Dark';
+TERM_PATH='~/src/github.com/tomislav/osx-terminal.app-colors-solarized/Solarized\ Dark.terminal';
+CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
+if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
+  open "$TERM_PATH"
+  defaults write com.apple.Terminal "Default Window Settings" -string "$TERM_PROFILE"
+  defaults write com.apple.Terminal "Startup Window Settings" -string "$TERM_PROFILE"
+fi#}}}
+
+# vim: set foldmethod=marker :

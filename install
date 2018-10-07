@@ -88,14 +88,16 @@ initialize() {
   fi
 
   if [ ! -d "${DOTPATH}" ]; then
-    echo "Downloading dotfiles..."
+    info "==> Downloading dotfiles..."
     cd ${HOME}
     echo ${PWD}
     #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
     git clone https://github.com/Nobv/dotfiles.git ${DOTPATH}
     cd ${DOTPATH}
     sh install.sh
+    succes "dotfiles"
   fi
+
 }
 
 
@@ -122,11 +124,17 @@ install() {
 
   cd ${PROVISIONINGPATH}
 
+  info "Starting install from anyenv brew brew-cask appstore and more..."
   make install
+  succes "install"
 
-  make osx_setting
+  info "Starting macos settings..."
+  make macos_setting
+  succes "macos settings"
 
-  make osx_update
+  info "Starting macos update..."
+  make macos_update
+
 }
 
 install

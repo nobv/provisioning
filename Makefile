@@ -3,19 +3,20 @@
 
 all:
 
-osx_update:
-	@echo '==> Start to osx-update!!!'
-	bash osx-update.sh
+macos_update:
+	@echo '==> Starting macos update...'
+	bash macos-update.sh
 
 install:
-	@echo '==> Start to install from brew brew-cask appstore!!!'
+	@echo '==> Staring install from anyenv brew brew-cask appstore and more...'
+	bash anyenv.sh
 	bash brew.sh
 	bash brew-cask.sh
 	bash appstore.sh
 	bash download.sh
 
-osx_setting:
-	@echo '==> Starting osx-defaults'
-	bash oxs-defaults.sh
+macos_setting:
+	@echo '==> Starting macos setting...'
+	bash .macos
 
 # vim: set noexpandtab tabstop=4 shiftwidth=4 :
