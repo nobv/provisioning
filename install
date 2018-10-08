@@ -108,6 +108,8 @@ download() {
     error "${PROVISIONINGPATH} is already exists."
     exit 1
   fi
+  
+  xcode-select --install
 
   # TODO: when git is not exists
   info "Downloading provisioning file..."
