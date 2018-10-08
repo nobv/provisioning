@@ -73,8 +73,7 @@ main() {
   confirm_update
 
   if [ $? -eq 0 ]; then
-    #update_osx
-    echo "yes"
+    update_osx
   fi
 
   # Todo: アップデートがなければ実行しないようにする
