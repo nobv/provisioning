@@ -7,6 +7,7 @@ macos_update:
 	@echo '==> Starting macos update...'
 	bash macos-update.sh
 
+.PHONY: install
 install:
 	@echo '==> Staring install from anyenv brew brew-cask appstore and more...'
 	bash anyenv.sh
