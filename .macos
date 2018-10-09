@@ -34,7 +34,18 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 #### Tracing speed
-defaults write -g com.apple.trackpad.scaling -float 4
+defaults write -g com.apple.trackpad.scaling -float 15
+
+
+## Keyboard
+
+### Keyboard
+
+#### Delay Until Repeat: Short
+defaults write -g InitialKeyRepeat -int 15
+
+### Key Repeat: Fast
+defaults write -g KeyRepeat -int 15
 
 
 ## Security & Privacy
@@ -57,12 +68,6 @@ defaults write com.apple.finder ShowPathbar -bool true
 ### Show Tab bar
 defaults write com.apple.finder ShowTabView -bool true
 
-
-## Other
-
-### Show the hidden files
-defaults write com.apple.finder AppleShowAllFiles YES
-
 # Terminal
 TERM_PROFILE='Solarized Dark';
 TERM_PATH=${HOME}/src/github.com/tomislav/osx-terminal.app-colors-solarized/Solarized\ Dark.terminal;
@@ -72,5 +77,18 @@ if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
   defaults write com.apple.Terminal "Default Window Settings" -string "$TERM_PROFILE"
   defaults write com.apple.Terminal "Startup Window Settings" -string "$TERM_PROFILE"
 fi
+
+
+## Other
+
+### Show the hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+
+### Show all extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+### Show the battery percentage from the menu bar 
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
 
 # vim: set foldmethod=marker :
