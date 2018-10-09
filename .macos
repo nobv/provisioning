@@ -32,6 +32,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 
 #### Tracing speed
 defaults write -g com.apple.trackpad.scaling -float 3
@@ -89,6 +90,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 ### Show the battery percentage from the menu bar 
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+### Erase all apps that are standard in the Dock
+defaults write com.apple.dock persistent-apps -array
 
 
 # vim: set foldmethod=marker :
