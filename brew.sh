@@ -20,11 +20,7 @@ if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
   brew install zsh
   zsh --version
 
-  message "\n"
-  message "/usr/local/bin/zshを追記"
-  message "\n"
-  sudo vi /etc/shells
-  # /usr/local/bin/zshを追記
+  sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
   chsh -s /usr/local/bin/zsh
   #exec $SHELL -l
   #echo $SHELL
