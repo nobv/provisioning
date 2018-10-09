@@ -109,8 +109,8 @@ download() {
     exit 1
   fi
   
-  xcode-select --install
-
+  xcode-select --install &
+  wait $!
   # TODO: when git is not exists
   info "Downloading provisioning file..."
   git clone "${OSX_GITHUB}" ${PROVISIONINGPATH}
