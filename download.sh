@@ -15,6 +15,8 @@ fi
 
 if ! is_ghq_exsits "ryanoasis/nerd-fonts"; then
   ghq get ryanoasis/nerd-fonts
+  cd ${GOPATH}/$(ghq list | grep nerd-fonts)
+  ./install.sh Hack
 fi
 
 if [ ! -d ${HOME}/.zplug ]; then
