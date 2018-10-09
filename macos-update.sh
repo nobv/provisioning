@@ -35,7 +35,12 @@ check_install_from_application() {
   if [[ $version -ge $target ]]; then
     #Open Installer
     # Todo: 動的にできる？
-    open -a /Applications/Install\ macOS\ High\ Sierra.app/
+    if [ -e /Applications/Install\ macOS\ High\ Sierra.app/ ]; then
+      open -a /Applications/Install\ macOS\ High\ Sierra.app/
+    else
+      sudo reboot
+    fi
+    
   fi
 
 }
