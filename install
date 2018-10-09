@@ -70,6 +70,21 @@ is_linux() {
   fi
 }
 
+print_in_color() {
+    printf "%b" \
+        "$(tput setaf "$2" 2> /dev/null)" \
+        "$1" \
+        "$(tput sgr0 2> /dev/null)"
+}
+
+print_in_green() {
+    print_in_color "$1" 2
+}
+
+print_success() {
+    print_in_green "   [✔] $1\n"
+}
+
 are_xcode_command_line_tools_installed() {
     xcode-select --print-path &> /dev/null
 }
