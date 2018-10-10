@@ -50,6 +50,11 @@ if ! is_exsits "tmux"; then
   tmux -V
 fi
 
+if ! is_exsits "code"; then
+  message "Installing visual-studio-code..."
+  brew  cask install visual-studio-code
+  code -v
+fi
 
 # Languages
 
