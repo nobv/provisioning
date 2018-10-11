@@ -8,7 +8,11 @@ is_ghq_exsits() {
   return $?
 }
 
-#ghq
+get_ghq_path() {
+  echo ${GOPATH}/$(ghq list | grep "$1")
+}
+
+# ghq
 if ! is_ghq_exsits "osx-terminal.app-colors-solarized"; then
   ghq get tomislav/osx-terminal.app-colors-solarized
 fi
@@ -19,6 +23,13 @@ if ! is_ghq_exsits "ryanoasis/nerd-fonts"; then
   ./install.sh Hack
 fi
 
+if ! is_ghq_exsits "delve"; then
+  ghq get derekparker/delve
+  cd ${GOPATH}/$(ghq list | grep delve)
+  make install
+fi
+
+# Other
 if [ ! -d ${HOME}/.zplug ]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi

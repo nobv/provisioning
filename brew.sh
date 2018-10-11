@@ -79,20 +79,6 @@ fi
 
 # Commands
 
-#if ! is_exsits "dlv"; then
-#  message "Installing go-delve/delve/delve"
-#  brew install go-celve/delve/delve
-#
-#  # see https://qiita.com/paveg/items/74468bca969c7739dfd7
-#  cd $HOME/Library/Caches/Homebrew
-#  ls delve*
-#  tar xf $(ls delve*)
-#  # TODO 動的に取れるようにする
-#  sh delve-1.0.0/scripts/gencert.sh
-#  brew install go-delve/delve/delve
-#  dlv version
-#fi
-
 if ! is_exsits "jq"; then
   message "Installing jq..."
   brew install jq
