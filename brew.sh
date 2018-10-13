@@ -1,13 +1,13 @@
 #!/bin/bash
 
 message () {
-  printf "\n\033[1m\033[34m%s\033[0m\n\n" "==> ${1}"
+  printf "\\n\\e[34m%s\\e[m\\n" "==> ${1}"
 }
 
 message "install brew apps!!"
 
 is_exsits () {
-  which "$1" >/dev/null 2>&1
+  command -v "$1"
   return $?
 }
 
@@ -15,15 +15,13 @@ is_exsits () {
 #message "Instaling bash4.x..."
 #brew install bash
 
-if [ ${SHELL} != "/usr/local/bin/zsh" ]; then
+if [ "${SHELL}" != "/usr/local/bin/zsh" ]; then
   message "Installing zsh..."
   brew install zsh
   zsh --version
 
   sudo sh -c "echo '/usr/local/bin/zsh' >> /etc/shells"
   chsh -s /usr/local/bin/zsh
-  #exec $SHELL -l
-  #echo $SHELL
 fi
 
 if ! is_exsits "git"; then
@@ -50,10 +48,16 @@ if ! is_exsits "tmux"; then
   tmux -V
 fi
 
-if ! is_exsits "code"; then
-  message "Installing visual-studio-code..."
-  brew  cask install visual-studio-code
-  code -v
+if ! is_exsits "shellcheck"; then
+  message "Installing shellcheck..."
+  brew install shellcheck
+  shellcheck -V
+fi
+
+if ! is_exsits "bats"; then
+  message "Installing bats..."
+  brew install bats
+  bats -v
 fi
 
 # Languages
@@ -117,16 +121,15 @@ fi
 
 # Dependencies
 
-if [ $(which vim) = "/usr/bin/vim" ]; then
+if [ "$(command -v vim)" = "/usr/bin/vim" ]; then
   message "Installing vim --with-lua --with-python3"
   brew install vim --with-lua --with-python3
   vim --version
 fi
 
-if [ ! -n $(pip3 freeze | grep neovim) ]; then
+if pip3 freeze | grep -q neovim; then
   message "Installing pip3 neovim..."
   pip3 install neovim
   pip3 freeze | grep neovim
 fi
-
 

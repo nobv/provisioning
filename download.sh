@@ -29,6 +29,10 @@ if ! is_ghq_exsits "delve"; then
   make install
 fi
 
+# go get
+# TODO: 
+# go-outline gocode godef gopkgs
+
 # Other
 if [ ! -d ${HOME}/.zplug ]; then
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
