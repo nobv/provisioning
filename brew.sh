@@ -11,6 +11,10 @@ is_exsits () {
   return $?
 }
 
+get_path () {
+  command -v "$1"; echo
+}
+
 # Tools
 #message "Instaling bash4.x..."
 #brew install bash
@@ -60,29 +64,6 @@ if ! is_exsits "bats"; then
   bats -v
 fi
 
-# Languages
-
-if ! is_exsits "erl"; then
-  message "Installing Erlang..."
-  brew install erlang
-  erl -version
-fi
-
-if ! is_exsits "lua"; then
-  message "Installing Lua..."
-  brew install lua
-  lua -v
-fi
-
-if ! is_exsits "python3"; then
-  message "Installing python3..."
-  brew install python3
-  python3 --version
-fi
-
-
-# Commands
-
 if ! is_exsits "jq"; then
   message "Installing jq..."
   brew install jq
@@ -117,6 +98,32 @@ if ! is_exsits "peco"; then
   message "Installing peco..."
   brew install peco
   peco --version
+fi
+
+if [ "$(get_path "ctags")" != /usr/local/bin/ctags ]; then
+  message "Installing ctags..."
+  brew install ctags
+  ctags --help
+fi
+
+# Languages
+
+if ! is_exsits "erl"; then
+  message "Installing Erlang..."
+  brew install erlang
+  erl -version
+fi
+
+if ! is_exsits "lua"; then
+  message "Installing Lua..."
+  brew install lua
+  lua -v
+fi
+
+if ! is_exsits "python3"; then
+  message "Installing python3..."
+  brew install python3
+  python4 --version
 fi
 
 # Dependencies
