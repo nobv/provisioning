@@ -106,6 +106,12 @@ if [ "$(get_path "ctags")" != /usr/local/bin/ctags ]; then
   ctags --help
 fi
 
+if ! is_exsits "youtube-dl"; then
+  message "Installing youtube-dl..."
+  brew install youtube-dl
+  youtube-dl --version
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
