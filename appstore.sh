@@ -46,3 +46,7 @@ fi
 if ! is_mas_exists "Disk Diag"; then
   mas install 672206759
 fi
+
+if ! is_mas_exists "iThoughtsX"; then
+  mas install 720669838
+fi
