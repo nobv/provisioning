@@ -49,7 +49,6 @@ if ! is_cask_exists "spotify"; then
 fi
 
 if ! is_cask_exists "code"; then
-  message "Installing visual-studio-code..."
   brew  cask install visual-studio-code
   code -v
 fi
