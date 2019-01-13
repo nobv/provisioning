@@ -29,6 +29,10 @@ if ! is_ghq_exsits "delve"; then
   make install
 fi
 
+if ! is_ghq_exsits "monokai.terminal"; then
+  ghq get stephenway/monokai.terminal
+fi
+
 # go get
 # TODO: 
 # go-outline gocode godef gopkgs
