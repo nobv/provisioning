@@ -8,11 +8,11 @@ is_cask_exists() {
 echo "Install GUI Apps"
 
 if ! is_cask_exists "appcleaner"; then
-  brew cask install appcleaner
+  #brew cask install appcleaner
 fi
 
 if ! is_cask_exists "cyberduck"; then
-  brew cask install cyberduck
+  #brew cask install cyberduck
 fi
 
 if ! is_cask_exists "docker"; then
@@ -20,7 +20,7 @@ if ! is_cask_exists "docker"; then
 fi
 
 if ! is_cask_exists "dropbox"; then
-  brew cask install dropbox
+  #brew cask install dropbox
 fi
 
 if ! is_cask_exists "firefox"; then
@@ -45,7 +45,7 @@ fi
 
 
 if ! is_cask_exists "spotify"; then
-  brew cask install spotify
+  #brew cask install spotify
 fi
 
 if ! is_cask_exists "code"; then
