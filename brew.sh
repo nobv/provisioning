@@ -112,6 +112,18 @@ if ! is_exsits "youtube-dl"; then
   youtube-dl --version
 fi
 
+if ! is_exsits "tig"; then
+  message "Installing tig..."
+  brew install tig
+  tig --version
+fi
+
+if ! is_exsits "neovim"; then
+  message "Installing neovim..."
+  brew install neovim
+  nvim -v
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
