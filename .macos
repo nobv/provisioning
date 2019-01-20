@@ -11,10 +11,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ## Sharing
 
 ### Set computer name
-sudo scutil --set ComputerName "Nobv"
-sudo scutil --set HostName "Nobv"
-sudo scutil --set LocalHostName "Nobv"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Nobv"
+#sudo scutil --set ComputerName "Nobv"
+#sudo scutil --set HostName "Nobv"
+#sudo scutil --set LocalHostName "Nobv"
+#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Nobv"
 
 ## Dock
 
@@ -54,7 +54,7 @@ defaults write -g KeyRepeat -int 2
 ## Firewall
 
 ### Turn On Firewall
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+#sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 
 # Finder
 

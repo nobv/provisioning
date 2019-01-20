@@ -337,8 +337,8 @@ install() {
   make macos_setting
   succes "macos settings"
 
-  info "Starting macos update..."
-  make macos_update
+  #info "Starting macos update..."
+  #make macos_update
 
 }
 
