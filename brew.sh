@@ -124,6 +124,11 @@ if ! is_exsits "neovim"; then
   nvim -v
 fi
 
+if ! is_exsits "kubectx"; then
+  message "Installing kubectx..."
+  brew install kubectx
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
