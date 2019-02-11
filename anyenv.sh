@@ -9,8 +9,10 @@ is_exsits() {
 
 if ! is_exsits "anyenv"; then
   echo "==> Installing anyenv..."
-  git clone https://github.com/riywo/anyenv ~/.anyenv
+  git clone https://github.com/anyenv/anyenv ~/.anyenv
+  anyenv install --force-init
   source ~/.zshrc
+
   echo "anyenv"
 fi
 
@@ -22,11 +24,12 @@ if [ ! -d ${ANYENV_ROOT}/plugins ]; then
 fi
 
 # node
-if ! is_exsits "ndenv"; then
-  anyenv install ndenv
+if ! is_exsits "nodenv"; then
+  anyenv install nodenv
   source ~/.zshrc
-  ndenv install v10.11.0
-  ndenv global v10.11.0
+
+  nodenv install 10.11.0
+  nodenv global 10.11.0
   echo "node -v"
   node -v
   echo "npm -v"
@@ -37,6 +40,7 @@ fi
 if ! is_exsits "goenv"; then
   anyenv install goenv
   source ~/.zshrc
+
   goenv install 1.11.1
   goenv global 1.11.1
   goenv rehash

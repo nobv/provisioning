@@ -49,3 +49,11 @@ if [ ! -e "${APPLICATIONPATH}/Flux.app" ]; then
   wait $!
   open Flux.app
 fi
+
+# todo
+#if [ ! -e "" ]; then
+#  curl -o ${DOWNLOADSPATH} https://cachefly.alfredapp.com/Alfred_3.8_959.dmg
+#  cd ${DOWNLOADSPATH}
+#  open Alfred_3.8_959.dmg
+#  wati $!
+#fi

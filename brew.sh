@@ -110,6 +110,7 @@ if ! is_exsits "youtube-dl"; then
   #message "Installing youtube-dl..."
   #brew install youtube-dl
   #youtube-dl --version
+  :
 fi
 
 if ! is_exsits "tig"; then
