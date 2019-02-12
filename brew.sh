@@ -130,6 +130,12 @@ if ! is_exsits "kubectx"; then
   brew install kubectx
 fi
 
+if ! is_exsits "lpass"; then
+  message "Installing lpass..."
+  brew install lastpass-cli
+  lpass --version
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
