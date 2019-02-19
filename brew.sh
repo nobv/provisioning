@@ -136,6 +136,12 @@ if ! is_exsits "lpass"; then
   lpass --version
 fi
 
+if ! is_exsits "trans"; then
+  message "Installing "
+  brew install translate-shell
+  trans -V
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
