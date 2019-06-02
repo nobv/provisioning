@@ -2,12 +2,12 @@
 
 ANYENV_ROOT=~/.anyenv
 
-is_exsits() {
+is_exsists() {
   which "$1" >/dev/null 2>&1
   return $?
 }
 
-if ! is_exsits "anyenv"; then
+if ! is_exsists "anyenv"; then
   echo "==> Installing anyenv..."
   git clone https://github.com/anyenv/anyenv ~/.anyenv
   anyenv install --force-init
@@ -24,7 +24,7 @@ if [ ! -d ${ANYENV_ROOT}/plugins ]; then
 fi
 
 # node
-if ! is_exsits "nodenv"; then
+if ! is_exsists "nodenv"; then
   anyenv install nodenv
   source ~/.zshrc
 
@@ -37,13 +37,27 @@ if ! is_exsits "nodenv"; then
 fi
 
 # go
-if ! is_exsits "goenv"; then
+if ! is_exsists "goenv"; then
   anyenv install goenv
   source ~/.zshrc
 
-  goenv install 1.11.1
-  goenv global 1.11.1
+  goenv install 1.12.4
+  goenv global 1.12.4
   goenv rehash
   echo "go version"
   go version
 fi
+
+# scala
+if ! is_exsists "scalaenv"; then
+    anyenv install scalaenv
+    source ~/.zshrc
+
+    scalaenv install scala-2.12.8
+    scalaenv global scala-2.12.8
+    echo "scala version"
+    scala -version
+fi
+
+# sbtenv
+# todo

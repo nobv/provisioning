@@ -19,6 +19,9 @@ get_path () {
 #message "Instaling bash4.x..."
 #brew install bash
 
+# homebrew-cask-versions
+brew tap homebrew/cask-versions
+
 if [ "${SHELL}" != "/usr/local/bin/zsh" ]; then
   message "Installing zsh..."
   brew install zsh
@@ -142,6 +145,12 @@ if ! is_exsits "trans"; then
   trans -V
 fi
 
+if ! is_exsits "scalastyle"; then
+  message "Installing scalastyle..."
+  brew install scalastyle
+  scalastyle
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
@@ -176,3 +185,7 @@ if pip3 freeze | grep -q neovim; then
   pip3 freeze | grep neovim
 fi
 
+if ! is_exsits "sbt"; then
+    message "Installing sbt..."
+    brew install sbt@1
+fi
