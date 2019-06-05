@@ -1,3 +1,3 @@
 # provisioning
 
-bash -c "$(curl -L https://raw.githubusercontent.com/Nobv/provisioning/master/install)"
+bash -c "$(curl -L https://raw.githubusercontent.com/nobv/provisioning/master/install)"
