@@ -154,6 +154,7 @@ fi
 if ! is_exsits "emacs-plus"; then
   message "Installing emacs-plus..."
   brew install emacs-plus --with-spacemacs-icon --with-dbus
+  ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 fi
 
 # Languages
