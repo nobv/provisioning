@@ -151,6 +151,11 @@ if ! is_exsits "scalastyle"; then
   scalastyle
 fi
 
+if ! is_exsits "emacs-plus"; then
+  message "Installing emacs-plus..."
+  brew install emacs-plus --with-spacemacs-icon --with-dbus
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
@@ -169,6 +174,11 @@ if ! is_exsits "python3"; then
   message "Installing python3..."
   brew install python3
   python4 --version
+fi
+
+if ! is_exsits "dbus"; then
+  message "INstalling dbus..."
+  brew install dbus
 fi
 
 # Dependencies
