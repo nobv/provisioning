@@ -157,6 +157,12 @@ if ! is_exsits "emacs-plus"; then
   ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 fi
 
+if ! is_exsits "direnv"; then
+  message "Installing direnv..."
+  brew install direnv
+  direnv version
+fi
+
 # Languages
 
 if ! is_exsits "erl"; then
