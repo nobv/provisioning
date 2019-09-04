@@ -163,6 +163,11 @@ if ! is_exsits "ripgrep"; then
   rg --version
 fi
 
+if ! is_exsits "direnv"; then
+  message "Installing direnv..."
+  brew install direnv
+  direnv version
+fi
 
 # Languages
 
