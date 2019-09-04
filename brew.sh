@@ -157,6 +157,13 @@ if ! is_exsits "emacs-plus"; then
   ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
 fi
 
+if ! is_exsits "ripgrep"; then
+  message "Installing ripgrep..."
+  brew install ripgrep
+  rg --version
+fi
+
+
 # Languages
 
 if ! is_exsits "erl"; then
