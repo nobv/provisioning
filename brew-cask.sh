@@ -43,7 +43,6 @@ if ! is_cask_exists "iterm2"; then
   brew cask install iterm2
 fi
 
-
 if ! is_cask_exists "spotify"; then
   brew cask install spotify
 fi
@@ -56,4 +55,17 @@ fi
 if ! is_cask_exists "java"; then
   brew cask install java
   java -version
+fi
+
+#if ! is_cask_exists "emacs"; then
+#  brew cask install emacs
+#  emacs --version
+#fi
+
+if ! is_cask_exists "postman"; then
+  brew cask install postman
+fi
+
+if ! is_cask_exists "font-source-code-pro"; then
+  brew tap caskroom/fonts && brew cask install font-source-code-pro
 fi

@@ -3,8 +3,8 @@
 PLATFORM=
 HOMEBREW=
 
-readonly OSX_GITHUB="https://github.com/Nobv/osx-provisioning.git"
-readonly PROVISIONINGPATH=~/.osx-provisioning
+readonly OSX_GITHUB="https://github.com/nobv/provisioning.git"
+readonly PROVISIONINGPATH=~/.provisioning
 readonly DOTPATH=~/.dotfiles
 
 
@@ -295,7 +295,7 @@ initialize() {
     cd ${HOME}
     echo ${PWD}
     #bash -c "$(curl -L https://github.com/Nobv/dotfiles.git)"
-    git clone https://github.com/Nobv/dotfiles.git ${DOTPATH}
+    git clone https://github.com/nobv/dotfiles.git ${DOTPATH}
     cd ${DOTPATH}
     sh install.sh
     succes "dotfiles"

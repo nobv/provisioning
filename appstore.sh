@@ -14,27 +14,22 @@ fi
 
 if ! is_mas_exists "Slack"; then
   mas install 803453959
-  :
 fi
 
 if ! is_mas_exists "LINE"; then
-  #mas install 539883307
-  :
+  mas install 539883307
 fi
 
 if ! is_mas_exists "The Unarchiver"; then
-  #mas install 425424353
-  :
+  mas install 425424353
 fi
 
 if ! is_mas_exists "Amphetamine"; then
-  #mas install 937984704
-  :
+  mas install 937984704
 fi
 
 if ! is_mas_exists "Magnet"; then
-  #mas install 441258766
-  :
+  mas install 441258766
 fi
 
 if ! is_mas_exists "Alfred"; then
@@ -58,6 +53,13 @@ if ! is_mas_exists "Disk Diag"; then
 fi
 
 if ! is_mas_exists "iThoughtsX"; then
-  #mas install 720669838
-  :
+  mas install 720669838
+fi
+
+if ! is_mas_exists "Telegram"; then
+  mas install 747648890
+fi
+
+if ! is_mas_exists "Things"; then
+  mas install 904280696
 fi

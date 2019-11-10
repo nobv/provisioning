@@ -110,10 +110,9 @@ if [ "$(get_path "ctags")" != /usr/local/bin/ctags ]; then
 fi
 
 if ! is_exsits "youtube-dl"; then
-  #message "Installing youtube-dl..."
-  #brew install youtube-dl
-  #youtube-dl --version
-  :
+  message "Installing youtube-dl..."
+  brew install youtube-dl
+  youtube-dl --version
 fi
 
 if ! is_exsits "tig"; then
@@ -151,6 +150,18 @@ if ! is_exsits "scalastyle"; then
   scalastyle
 fi
 
+if ! is_exsits "clang"; then
+  brew install clang
+fi
+
+if ! is_exsits "fd"; then
+  brew install fd
+fi
+
+if ! is_exsits "coreutils"; then
+  brew install coreutils
+fi
+
 if ! is_exsits "emacs-plus"; then
   message "Installing emacs-plus..."
   brew install emacs-plus --with-spacemacs-icon --with-dbus
@@ -167,6 +178,18 @@ if ! is_exsits "direnv"; then
   message "Installing direnv..."
   brew install direnv
   direnv version
+fi
+
+if ! is_exsits "protobuf"; then
+  message "Installing protobuf..."
+  brew install protobuf
+  protoc --version
+fi
+
+if ! is_exsits "clang-format"; then
+  message "Installing clang-format..."
+  brew install clang-format
+  clang-format --version
 fi
 
 # Languages
@@ -212,3 +235,4 @@ if ! is_exsits "sbt"; then
     message "Installing sbt..."
     brew install sbt@1
 fi
+

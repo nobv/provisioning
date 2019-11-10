@@ -28,8 +28,8 @@ if ! is_exsists "nodenv"; then
   anyenv install nodenv
   source ~/.zshrc
 
-  nodenv install 10.11.0
-  nodenv global 10.11.0
+  nodenv install 13.1.0
+  nodenv global 13.1.0
   echo "node -v"
   node -v
   echo "npm -v"
@@ -41,8 +41,8 @@ if ! is_exsists "goenv"; then
   anyenv install goenv
   source ~/.zshrc
 
-  goenv install 1.12.4
-  goenv global 1.12.4
+  goenv install 1.13.1
+  goenv global 1.13.1
   goenv rehash
   echo "go version"
   go version
