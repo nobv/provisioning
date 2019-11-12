@@ -164,8 +164,8 @@ fi
 
 if ! is_exsits "emacs-plus"; then
   message "Installing emacs-plus..."
-  brew install emacs-plus --with-spacemacs-icon --with-dbus
-  ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications
+  brew install emacs-plus --with-dbus
+  ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 fi
 
 if ! is_exsits "ripgrep"; then
@@ -232,7 +232,11 @@ if pip3 freeze | grep -q neovim; then
 fi
 
 if ! is_exsits "sbt"; then
-    message "Installing sbt..."
-    brew install sbt@1
+  message "Installing sbt..."
+  brew install sbt@1
 fi
 
+if ! is_exsits "golangci-lint"; then
+  brew install golangci/tap/golangci-lint
+  brew upgrade golangci/tap/golangci-lint
+fi

@@ -48,8 +48,12 @@ if ! is_cask_exists "spotify"; then
 fi
 
 if ! is_cask_exists "code"; then
-  brew  cask install visual-studio-code
+  brew cask install visual-studio-code
   code -v
+fi
+
+if ! is_cask_exists "adoptopenjdk"; then
+  brew casc install adoptopenjdk
 fi
 
 if ! is_cask_exists "java"; then
@@ -57,15 +61,19 @@ if ! is_cask_exists "java"; then
   java -version
 fi
 
-#if ! is_cask_exists "emacs"; then
-#  brew cask install emacs
-#  emacs --version
-#fi
-
 if ! is_cask_exists "postman"; then
   brew cask install postman
 fi
 
 if ! is_cask_exists "font-source-code-pro"; then
-  brew tap caskroom/fonts && brew cask install font-source-code-pro
+  brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+fi
+
+
+if ! is_cask_exists "sequel-pro"; then
+  brew cask install sequel-pro
+fi
+
+if ! is_cask_exists "dbeaver-community"; then
+  brew cask install dbeaver-community
 fi
