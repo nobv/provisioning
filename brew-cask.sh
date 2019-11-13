@@ -77,3 +77,7 @@ fi
 if ! is_cask_exists "dbeaver-community"; then
   brew cask install dbeaver-community
 fi
+
+if ! is_cask_exists "fork"; then
+  brew cask install fork
+fi
