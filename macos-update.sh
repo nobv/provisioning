@@ -40,7 +40,6 @@ check_install_from_application() {
     else
       sudo reboot
     fi
-    
   fi
 
 }
@@ -69,7 +68,7 @@ get_current_os_version() {
 }
 
 to_zero_padding() {
-  echo $("$1"| awk -F. '{printf "%2d%02d%02d", $1,$2,$3}') 
+  echo $("$1"| awk -F. '{printf "%2d%02d%02d", $1,$2,$3}')
 }
 
 main() {

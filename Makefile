@@ -1,20 +1,21 @@
 all:
 
 macos_update:
-	@echo '==> Starting macos update...'
 	bash macos-update.sh
 
-.PHONY: install
-install:
-	@echo '==> Staring install from anyenv brew brew-cask appstore and more...'
+.PHONY: anyenv
+anyenv:
 	bash anyenv.sh
-	bash brew.sh
-	bash brew-cask.sh
-	bash appstore.sh
+
+.PHONY: download
+download:
 	bash download.sh
 
+.PHONY: macos_setting
 macos_setting:
-	@echo '==> Starting macos setting...'
 	bash .macos
+
+bundle:
+	brew bundle --global
 
 # vim: set noexpandtab tabstop=4 shiftwidth=4 :
